@@ -1,8 +1,27 @@
 use std::any::type_name_of_val;
 
 fn main() {
-    _floatingpoint();
+    _expression();
 }
+
+fn _expression() {
+    let x: u32 = 5u32;
+
+    let y = {
+        let x_squared = x * x;
+        let x_cube = x_squared * x;
+
+        x_cube + x_squared
+    };
+
+    print!("{}", y)
+}
+//Done
+fn _chartest() {
+    let a: char = 'a';
+    println!("{}", size_of_val(&a));
+}
+//Done
 fn _floatingpoint() {
     let x: f64 = 0.2;
     let _y: f32 = 0.3;
