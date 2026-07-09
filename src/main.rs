@@ -1,9 +1,51 @@
-use std::any::type_name_of_val;
+use std::{any::type_name_of_val, string};
 
 fn main() {
-    _expression();
+   
+    _deref();
 }
 
+fn _deref() {
+    struct Person {
+        _name: String,
+        _age: Box<u8>,
+    };
+
+    let person: Person = Person {
+        _name: String::from("Alice"),
+        _age: Box::new(16),
+    };
+    //Deref
+    let Person {_name, ref _age} = person;
+    println!("{} {:?}", _name, person._age);
+    // println!("Panic {:?}", person._name);
+
+}
+//Done 
+fn _main2() {
+    let s = String::from("Hello"); 
+    let x: i8 = 10;
+    _takes_ownership(s, x);
+    println!("{:?}", x);
+    // println!("Dropped{}", s);
+}
+fn _takes_ownership(allocated_string: String, makes_copy: i8) {
+    println!("Alocated: {} | MakesCopy: {:?}", allocated_string, makes_copy);
+}
+
+
+//Done || println!("{}",_get_option(0))
+fn _get_option(tp: u8) -> i32 {
+    match tp {
+        1 => {
+            5i32
+        }
+        _ =>{
+            10i32
+        }
+    }
+}
+//Done
 fn _expression() {
     let x: u32 = 5u32;
 
