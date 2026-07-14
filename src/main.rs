@@ -2,14 +2,24 @@ use std::{any::type_name_of_val, string};
 
 fn main() {
    
-    _deref();
 }
+//Done
+fn _references() {
+    let mut msg: String = String::from("Hello");
 
+    let r1 : &mut String = &mut msg;
+    println!("{},", r1);
+    let r2: &mut String  = &mut msg;
+
+    println!("{},", r2);
+    // println!("{}, {}", r1, r2) -> Error
+}
+//done
 fn _deref() {
     struct Person {
         _name: String,
         _age: Box<u8>,
-    };
+    }
 
     let person: Person = Person {
         _name: String::from("Alice"),
