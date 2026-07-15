@@ -1,7 +1,28 @@
 use std::{any::type_name_of_val, string};
 
 fn main() {
-   
+   _struct();
+}
+
+//Done
+struct  User {
+    active: bool,
+    username: String,
+    email: String,
+}
+fn _struct() {
+    let user1 = User {
+        active: true,
+        username: String::from("GG"),
+        email: String::from("user@gmail.com"),
+    };
+    println!("{}, {}, {}", user1.active, user1.username, user1.email);
+}
+//Done
+fn _tuple() {
+    let tup = (2,3);
+    let (_deref1, _deref2) = tup;
+    println!("{}, {}",  _deref1, _deref2)
 }
 //Done
 fn _references() {
