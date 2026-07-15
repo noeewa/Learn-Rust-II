@@ -1,10 +1,10 @@
 use std::{any::type_name_of_val, string};
 
 fn main() {
-   _struct();
+   
 }
 
-//Done
+//Done Mirip Object: _struct();
 struct  User {
     active: bool,
     username: String,
