@@ -1,22 +1,82 @@
 use std::{any::type_name_of_val, string};
 
+
 fn main() {
-   
+   _enum();
+}
+fn _enum() {
+    enum Direction {
+        East,
+        West,
+        North,
+        South
+    }
+    enum Number {
+        One(u8),
+        Two(u16),
+    }
+    //Multiple Data Type
+    enum Messege {
+        Quit,
+        Move { x:i32, y:i32},
+        Write(String),
+        ChangeColor(i32, i32, i32),
+    }
+    //Enum
+    let dire: Direction = Direction::East;
+    //Option<T>
+    let _number = Some(5u32);
+    //Array Enum
+    let _msgs: [Messege; 3] = [
+        Messege::Quit,
+        Messege::Move { x: (10), y: (5) },
+        Messege::Write(String::from("Hello World"))
+    ];
+    match dire {
+        Direction::East => println!("East"),
+        Direction::North | Direction::South => println!("North or South"),
+        _ => ()
+    };
+    //Desturcturing some
+    if let Some(angka) = _number {
+        println!("{}", angka)
+    }
+    //enumerating enum
+    for msg in _msgs {
+        match msg {
+            Messege::Quit => {
+                println!("Quit")
+            },
+            Messege::Move { x: a, y: b } => {
+                println!("{} {}", a, b)
+            },
+            Messege::Write(str) => {
+                println!("{str}")
+            },
+            _ => (),
+        }
+    }
 }
 
 //Done Mirip Object: _struct();
-struct  User {
+struct  _User {
     active: bool,
     username: String,
     email: String,
 }
 fn _struct() {
-    let user1 = User {
+    let user1 = _User {
         active: true,
         username: String::from("GG"),
         email: String::from("user@gmail.com"),
     };
     println!("{}, {}, {}", user1.active, user1.username, user1.email);
+    let _user2 = _User {
+        email: String::from("new@gmail.com"),
+        ..user1
+    };
+
+    // println!("{}, {}, {}", user1.active, user1.username, user1.email); - Error karena moved value
 }
 //Done
 fn _tuple() {
