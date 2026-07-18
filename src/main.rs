@@ -1,9 +1,61 @@
-use std::{any::type_name_of_val, string};
+use std::{any::type_name_of_val};
 
 
 fn main() {
-   _enum();
+    _method();
 }
+#[allow(unused_variables)]
+fn _method(){
+    struct Rectangle {
+        width: i32,
+        height: i32,
+    }
+    //Method
+    impl Rectangle  {
+        fn area(&self) -> i32 {
+            return self.width * self.height
+        }
+        //Associated Function
+        fn new() -> Self {
+            Self { width: 10, height: 10 }
+        }
+    }
+
+    let react1: Rectangle = Rectangle { width: 15, height: 20 };
+    println!("{}", react1.area());
+
+    let react2: Rectangle = Rectangle::new();
+    println!("{}", react2.area());
+}
+fn _matching_id(){
+    enum Messege {
+        Hello {id: i32}
+    }
+
+    let msg: Messege = Messege::Hello {id: 19};
+
+    match msg {
+        Messege::Hello { id: _value @ (5 | 15) } => println!("Value: {}", _value),
+        Messege::Hello { id: _etc @ (16..=20) } => print!("Between 6 - 20, value: {}", _etc),
+        _ => println!("Nothing"),
+    }
+}
+
+//Done
+fn _shadowing(){
+    let _age: Option<i32> = Some(18);
+    //destructering
+    if let Some(_age) = _age {
+        println!("Age: {}", _age);
+    } //or with match
+
+    match _age {
+        Some(age) => { println!("Age: {}", age)}
+        _ => ()
+    }
+}   
+
+//Done
 fn _enum() {
     enum Direction {
         East,
