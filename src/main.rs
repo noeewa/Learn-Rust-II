@@ -2,8 +2,60 @@ use std::{any::type_name_of_val};
 
 
 fn main() {
-    _method();
+    _traits();
 }
+
+//Not DONE!, it's alot to learn about trait, bound, generics, moree.
+#[allow(unused_variables)]
+fn _traits() {
+    struct Cow {}
+    struct Cat {}
+
+    //For function
+    struct Paragraph {
+    }
+
+    trait _Animal {
+        fn sound(&self) {}
+    }
+
+    trait _Information {
+        fn _summarize(&self) -> String;
+    }
+
+    impl _Animal for Cow {
+        fn sound(&self) {
+            println!("Moooo");
+        }
+    }
+    impl _Animal for Cat {
+        fn sound(&self) {
+            println!("Meowww");
+        }
+    }
+
+    impl _Information for Paragraph {
+        fn _summarize(&self) -> String {
+            String::from("Summarized")
+        }
+    }
+
+    let cat: Cat = Cat{};
+    cat.sound();
+    let cow: Cow = Cow{};
+    cow.sound();
+
+    //function with trait
+
+    pub fn notify<T: _Information>(item: &T) {
+        println!("{}", item._summarize())
+    }
+    let paraf: Paragraph = Paragraph { };
+    notify(&paraf);
+}
+
+//Generics Skipped by the way, I just watch and dont have much time try excercise.
+//Done
 #[allow(unused_variables)]
 fn _method(){
     struct Rectangle {
@@ -12,20 +64,20 @@ fn _method(){
     }
     //Method
     impl Rectangle  {
-        fn area(&self) -> i32 {
+        fn _area(&self) -> i32 {
             return self.width * self.height
         }
         //Associated Function
-        fn new() -> Self {
+        fn _new() -> Self {
             Self { width: 10, height: 10 }
         }
     }
 
     let react1: Rectangle = Rectangle { width: 15, height: 20 };
-    println!("{}", react1.area());
+    println!("{}", react1._area());
 
-    let react2: Rectangle = Rectangle::new();
-    println!("{}", react2.area());
+    let react2: Rectangle = Rectangle::_new();
+    println!("{}", react2._area());
 }
 fn _matching_id(){
     enum Messege {
